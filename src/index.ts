@@ -6,7 +6,7 @@
  *
  * @example
  * ```ts
- * import { BeerFYI } from "beerfyi";
+ * import { BeerFYI } from "@fyipedia/beerfyi";
  *
  * const api = new BeerFYI();
  * const results = await api.search("ipa");

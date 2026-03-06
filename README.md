@@ -1,9 +1,9 @@
 # beerfyi
 
-[![npm](https://img.shields.io/npm/v/beerfyi)](https://www.npmjs.com/package/beerfyi)
+[![npm](https://img.shields.io/npm/v/@fyipedia/beerfyi)](https://www.npmjs.com/package/@fyipedia/beerfyi)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](https://www.npmjs.com/package/beerfyi)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](https://www.npmjs.com/package/@fyipedia/beerfyi)
 
 TypeScript API client for [BeerFYI](https://beerfyi.com) -- the complete beer style reference with 112 BJCP-classified beer styles, 82 hop varieties, 41 malts, 29 yeast strains, and 150 expert guides. Search styles, ingredients, compare beer profiles, and explore brewing science through a typed REST API. Zero dependencies, uses native `fetch`.
 
@@ -28,7 +28,7 @@ TypeScript API client for [BeerFYI](https://beerfyi.com) -- the complete beer st
 ## Install
 
 ```bash
-npm install beerfyi
+npm install @fyipedia/beerfyi
 ```
 
 Works in Node.js, Deno, Bun, and browsers (ESM).
@@ -36,7 +36,7 @@ Works in Node.js, Deno, Bun, and browsers (ESM).
 ## Quick Start
 
 ```typescript
-import { BeerFYI } from "beerfyi";
+import { BeerFYI } from "@fyipedia/beerfyi";
 
 const api = new BeerFYI();
 
@@ -116,7 +116,7 @@ Learn more: [Browse 41 Malts](https://beerfyi.com/malt/)
 ## TypeScript Types
 
 ```typescript
-import type { SearchResult, GlossaryTerm, StyleDetail, HopDetail, MaltDetail, YeastDetail, BreweryDetail, CompareResult, RandomResult } from "beerfyi";
+import type { SearchResult, GlossaryTerm, StyleDetail, HopDetail, MaltDetail, YeastDetail, BreweryDetail, CompareResult, RandomResult } from "@fyipedia/beerfyi";
 ```
 
 ## Learn More About Beer

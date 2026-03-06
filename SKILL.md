@@ -12,7 +12,7 @@ metadata:
 
 TypeScript API client for beerfyi.com. Search 112 BJCP beer styles, 82 hop varieties, 41 malts, 29 yeast strains, and brewing terminology. Zero dependencies.
 
-**Install**: `npm install beerfyi` -- **Web**: [beerfyi.com](https://beerfyi.com/) -- **API**: [REST API](https://beerfyi.com/developers/) -- **PyPI**: `pip install beerfyi`
+**Install**: `npm install @fyipedia/beerfyi` -- **Web**: [beerfyi.com](https://beerfyi.com/) -- **API**: [REST API](https://beerfyi.com/developers/) -- **PyPI**: `pip install beerfyi`
 
 ## When to Use
 

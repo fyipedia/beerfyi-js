@@ -1,5 +1,5 @@
 {
-  "name": "beerfyi",
+  "name": "@fyipedia/beerfyi",
   "version": "0.1.0",
   "description": "TypeScript API client for BeerFYI -- beer styles, hops, malts, yeast, and BJCP classifications. Zero dependencies.",
   "type": "module",
