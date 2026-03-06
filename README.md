@@ -19,7 +19,9 @@ TypeScript API client for [BeerFYI](https://beerfyi.com) -- the complete beer st
   - [Malts and Grains](#malts-and-grains)
   - [Key Brewing Metrics](#key-brewing-metrics)
 - [API Reference](#api-reference)
+- [REST API (No Auth Required)](#rest-api-no-auth-required)
 - [TypeScript Types](#typescript-types)
+- [Features](#features)
 - [Learn More About Beer](#learn-more-about-beer)
 - [Also Available for Python](#also-available-for-python)
 - [Beverage FYI Family](#beverage-fyi-family)
@@ -113,18 +115,65 @@ Learn more: [Browse 41 Malts](https://beerfyi.com/malt/)
 | `compare(slugA, slugB)` | Compare two beer styles |
 | `random()` | Random beer style |
 
+## REST API (No Auth Required)
+
+All endpoints are free, require no authentication, and return JSON with CORS enabled.
+
+```bash
+# Search beers, styles, hops, malts
+curl "https://beerfyi.com/api/v1/search/?q=ipa"
+
+# Beer style detail
+curl "https://beerfyi.com/api/v1/style/american-ipa/"
+
+# Hop variety detail
+curl "https://beerfyi.com/api/v1/hop/citra/"
+
+# Malt detail
+curl "https://beerfyi.com/api/v1/malt/pale-ale-malt/"
+
+# Compare two styles
+curl "https://beerfyi.com/api/v1/compare/american-ipa/english-ipa/"
+
+# Random beer style
+curl "https://beerfyi.com/api/v1/random/"
+```
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/style/` | List all 112 beer styles |
+| GET | `/api/v1/style/{slug}/` | Beer style detail with BJCP stats |
+| GET | `/api/v1/hop/` | List all hop varieties |
+| GET | `/api/v1/hop/{slug}/` | Hop variety detail |
+| GET | `/api/v1/malt/` | List all malt types |
+| GET | `/api/v1/malt/{slug}/` | Malt detail |
+| GET | `/api/v1/glossary/{slug}/` | Glossary term definition |
+| GET | `/api/v1/search/?q={query}` | Search across all content |
+| GET | `/api/v1/compare/{slug1}/{slug2}/` | Compare two beer styles |
+| GET | `/api/v1/random/` | Random beer style |
+| GET | `/api/v1/openapi.json` | OpenAPI 3.1.0 specification |
+
+Full spec: [OpenAPI 3.1.0](https://beerfyi.com/api/v1/openapi.json)
+
 ## TypeScript Types
 
 ```typescript
 import type { SearchResult, GlossaryTerm, StyleDetail, HopDetail, MaltDetail, YeastDetail, BreweryDetail, CompareResult, RandomResult } from "@fyipedia/beerfyi";
 ```
 
+## Features
+
+- **Comprehensive beer data**: 112 BJCP styles, hop varieties, malt types, yeast strains
+- **BJCP guidelines**: OG, FG, IBU, SRM, ABV ranges per style
+- **Style comparison**: Side-by-side analysis of beer styles
+- **Brewing glossary**: Technical brewing terminology
+- **Zero dependencies**: Uses native `fetch`, no runtime deps
+- **Type-safe**: Full TypeScript with strict mode
+- **Tree-shakeable**: ESM with named exports
+
 ## Learn More About Beer
 
-- **Reference**: [Styles](https://beerfyi.com/styles/) | [Hops](https://beerfyi.com/hops/) | [Malts](https://beerfyi.com/malts/) | [Yeast](https://beerfyi.com/yeast/)
-- **Guides**: [Brewing Guides](https://beerfyi.com/guides/) | [Glossary](https://beerfyi.com/glossary/)
-- **API**: [Developer Docs](https://beerfyi.com/developers/) | [OpenAPI Spec](https://beerfyi.com/api/openapi.json)
-- **Python**: [PyPI Package](https://pypi.org/project/beerfyi/)
+Visit [beerfyi.com](https://beerfyi.com/) to explore 112 BJCP beer styles, 82 hop varieties, 41 malts, and brewing science with interactive tools.
 
 ## Also Available for Python
 
@@ -132,7 +181,11 @@ import type { SearchResult, GlossaryTerm, StyleDetail, HopDetail, MaltDetail, Ye
 pip install beerfyi
 ```
 
-See the [Python package on PyPI](https://pypi.org/project/beerfyi/).
+See [beerfyi on PyPI](https://pypi.org/project/beerfyi/) for the Python package with API client, CLI, and MCP server.
+
+<p align="center">
+  <img src="demo.gif" alt="BeerFYI demo -- beer API client for TypeScript" width="800">
+</p>
 
 ## Beverage FYI Family
 
@@ -142,7 +195,7 @@ Part of the [FYIPedia](https://fyipedia.com) open-source developer tools ecosyst
 |---------|------|-----|-------------|
 | cocktailfyi | [PyPI](https://pypi.org/project/cocktailfyi/) | [npm](https://www.npmjs.com/package/cocktailfyi) | 636 cocktails, ABV, calories -- [cocktailfyi.com](https://cocktailfyi.com/) |
 | vinofyi | [PyPI](https://pypi.org/project/vinofyi/) | [npm](https://www.npmjs.com/package/vinofyi) | Wines, grapes, regions, food pairings -- [vinofyi.com](https://vinofyi.com/) |
-| **beerfyi** | [PyPI](https://pypi.org/project/beerfyi/) | [npm](https://www.npmjs.com/package/beerfyi) | **112 beer styles, hops, malts, BJCP -- [beerfyi.com](https://beerfyi.com/)** |
+| **beerfyi** | [PyPI](https://pypi.org/project/beerfyi/) | [npm](https://www.npmjs.com/package/@fyipedia/beerfyi) | **112 beer styles, hops, malts, BJCP -- [beerfyi.com](https://beerfyi.com/)** |
 | brewfyi | [PyPI](https://pypi.org/project/brewfyi/) | [npm](https://www.npmjs.com/package/brewfyi) | 72 coffee varieties, brew methods -- [brewfyi.com](https://brewfyi.com/) |
 | whiskeyfyi | [PyPI](https://pypi.org/project/whiskeyfyi/) | [npm](https://www.npmjs.com/package/whiskeyfyi) | 80 whiskey expressions, distilleries -- [whiskeyfyi.com](https://whiskeyfyi.com/) |
 | teafyi | [PyPI](https://pypi.org/project/teafyi/) | [npm](https://www.npmjs.com/package/teafyi) | 60 tea varieties, teaware -- [teafyi.com](https://teafyi.com/) |
