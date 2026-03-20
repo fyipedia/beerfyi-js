@@ -1,20 +1,20 @@
 /**
- * BeerFYI API client -- TypeScript wrapper for beerfyi.com REST API.
+ * BeerFYI API client — TypeScript wrapper for beerfyi.com REST API.
  *
  * Zero dependencies. Uses native `fetch`.
+ *
+ * @example
+ * ```ts
+ * import { BeerFYI } from "beerfyi";
+ * const api = new BeerFYI();
+ * const items = await api.search("query");
+ * ```
  */
 
-import type {
-  BreweryDetail,
-  CompareResult,
-  GlossaryTerm,
-  HopDetail,
-  MaltDetail,
-  RandomResult,
-  SearchResult,
-  StyleDetail,
-  YeastDetail,
-} from "./types.js";
+/** Generic API response type. */
+export interface ApiResponse {
+  [key: string]: unknown;
+}
 
 export class BeerFYI {
   private baseUrl: string;
@@ -23,7 +23,7 @@ export class BeerFYI {
     this.baseUrl = baseUrl.replace(/\/+$/, "");
   }
 
-  private async get<T>(
+  private async get<T = ApiResponse>(
     path: string,
     params?: Record<string, string>,
   ): Promise<T> {
@@ -36,51 +36,130 @@ export class BeerFYI {
     return res.json() as Promise<T>;
   }
 
-  /** Search beer styles, hops, malts, yeast, and glossary terms. */
-  async search(query: string): Promise<SearchResult> {
-    return this.get<SearchResult>("/api/search/", { q: query });
+  // -- Endpoints ----------------------------------------------------------
+
+  /** List all breweries. */
+  async listBreweries(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/breweries/", params);
   }
 
-  /** Get a glossary term by slug. */
-  async glossaryTerm(slug: string): Promise<GlossaryTerm> {
-    return this.get<GlossaryTerm>(`/api/term/${slug}/`);
+  /** Get brewery by slug. */
+  async getBrewery(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/breweries/${slug}/`);
   }
 
-  /** Get beer style detail by slug. */
-  async style(slug: string): Promise<StyleDetail> {
-    return this.get<StyleDetail>(`/api/style/${slug}/`);
+  /** List all categories. */
+  async listCategories(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/categories/", params);
   }
 
-  /** Get hop variety detail by slug. */
-  async hop(slug: string): Promise<HopDetail> {
-    return this.get<HopDetail>(`/api/hop/${slug}/`);
+  /** Get category by slug. */
+  async getCategory(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/categories/${slug}/`);
   }
 
-  /** Get malt detail by slug. */
-  async malt(slug: string): Promise<MaltDetail> {
-    return this.get<MaltDetail>(`/api/malt/${slug}/`);
+  /** List all countries. */
+  async listCountries(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/countries/", params);
   }
 
-  /** Get yeast strain detail by slug. */
-  async yeast(slug: string): Promise<YeastDetail> {
-    return this.get<YeastDetail>(`/api/yeast/${slug}/`);
+  /** Get country by slug. */
+  async getCountry(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/countries/${slug}/`);
   }
 
-  /** Get brewery detail by slug. */
-  async brewery(slug: string): Promise<BreweryDetail> {
-    return this.get<BreweryDetail>(`/api/brewery/${slug}/`);
+  /** List all faqs. */
+  async listFaqs(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/faqs/", params);
   }
 
-  /** Compare two beer styles. */
-  async compare(slugA: string, slugB: string): Promise<CompareResult> {
-    return this.get<CompareResult>("/api/compare/", {
-      a: slugA,
-      b: slugB,
-    });
+  /** Get faq by slug. */
+  async getFaq(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/faqs/${slug}/`);
   }
 
-  /** Get a random beer style. */
-  async random(): Promise<RandomResult> {
-    return this.get<RandomResult>("/api/random/");
+  /** List all glossary. */
+  async listGlossary(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/glossary/", params);
+  }
+
+  /** Get term by slug. */
+  async getTerm(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/glossary/${slug}/`);
+  }
+
+  /** List all guides. */
+  async listGuides(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/guides/", params);
+  }
+
+  /** Get guide by slug. */
+  async getGuide(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/guides/${slug}/`);
+  }
+
+  /** List all hops. */
+  async listHops(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/hops/", params);
+  }
+
+  /** Get hop by slug. */
+  async getHop(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/hops/${slug}/`);
+  }
+
+  /** List all malts. */
+  async listMalts(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/malts/", params);
+  }
+
+  /** Get malt by slug. */
+  async getMalt(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/malts/${slug}/`);
+  }
+
+  /** List all regions. */
+  async listRegions(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/regions/", params);
+  }
+
+  /** Get region by slug. */
+  async getRegion(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/regions/${slug}/`);
+  }
+
+  /** List all styles. */
+  async listStyles(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/styles/", params);
+  }
+
+  /** Get style by slug. */
+  async getStyle(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/styles/${slug}/`);
+  }
+
+  /** List all tools. */
+  async listTools(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/tools/", params);
+  }
+
+  /** Get tool by slug. */
+  async getTool(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/tools/${slug}/`);
+  }
+
+  /** List all yeasts. */
+  async listYeasts(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/yeasts/", params);
+  }
+
+  /** Get yeast by slug. */
+  async getYeast(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/yeasts/${slug}/`);
+  }
+
+  /** Search across all content. */
+  async search(query: string, params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/search/", { q: query, ...params });
   }
 }
