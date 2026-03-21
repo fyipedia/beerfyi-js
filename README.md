@@ -77,19 +77,17 @@ Beer styles follow the Beer Judge Certification Program (BJCP) guidelines -- the
 | Sour | Intentional acidity from wild yeast/bacteria | Lambic, Gose, Flanders Red |
 | Belgian | Complex yeast character, phenols, esters | Dubbel, Tripel, Saison |
 
-Learn more: [Browse 112 Beer Styles](https://beerfyi.com/style/) -- [Style Comparison](https://beerfyi.com/compare/)
-
-### Hop Varieties
+Learn more: [Browse 112 Beer Styles](https://beerfyi.com/styles/) -- ### Hop Varieties
 
 82 hop varieties with alpha acid percentages, aroma descriptors, and recommended beer styles. Hops provide bitterness, floral/citrus/pine aromas, and act as a natural preservative. Major growing regions include Yakima Valley, Hallertau, Kent, Saaz, and Nelson.
 
-Learn more: [Explore 82 Hop Varieties](https://beerfyi.com/hop/)
+Learn more: [Explore 82 Hop Varieties](https://beerfyi.com/hops/)
 
 ### Malts and Grains
 
 41 malts covering base malts (Pale, Pilsner, Munich), specialty malts (Crystal, Chocolate, Black Patent), and adjuncts (wheat, oats, rye). Temperature and duration of kilning determine color (2-450 SRM) and flavor.
 
-Learn more: [Browse 41 Malts](https://beerfyi.com/malt/)
+Learn more: [Browse 41 Malts](https://beerfyi.com/malts/)
 
 ### Key Brewing Metrics
 
@@ -124,19 +122,19 @@ All endpoints are free, require no authentication, and return JSON with CORS ena
 curl "https://beerfyi.com/api/v1/search/?q=ipa"
 
 # Beer style detail
-curl "https://beerfyi.com/api/v1/style/american-ipa/"
+curl ""
 
 # Hop variety detail
-curl "https://beerfyi.com/api/v1/hop/citra/"
+curl ""
 
 # Malt detail
-curl "https://beerfyi.com/api/v1/malt/pale-ale-malt/"
+curl ""
 
 # Compare two styles
-curl "https://beerfyi.com/api/v1/compare/american-ipa/english-ipa/"
+curl ""
 
 # Random beer style
-curl "https://beerfyi.com/api/v1/random/"
+curl ""
 ```
 
 | Method | Endpoint | Description |
@@ -153,9 +151,7 @@ curl "https://beerfyi.com/api/v1/random/"
 | GET | `/api/v1/random/` | Random beer style |
 | GET | `/api/v1/openapi.json` | OpenAPI 3.1.0 specification |
 
-Full spec: [OpenAPI 3.1.0](https://beerfyi.com/api/v1/openapi.json)
-
-## TypeScript Types
+Full spec: ## TypeScript Types
 
 ```typescript
 import type { SearchResult, GlossaryTerm, StyleDetail, HopDetail, MaltDetail, YeastDetail, BreweryDetail, CompareResult, RandomResult } from "@fyipedia/beerfyi";
